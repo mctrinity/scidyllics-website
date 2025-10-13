@@ -8,9 +8,11 @@ export async function GET() {
       take: 10 // Last 10 leads
     });
     
+    type LeadType = typeof leads[0];
+    
     return NextResponse.json({
       count: leads.length,
-      leads: leads.map(lead => ({
+      leads: leads.map((lead: LeadType) => ({
         id: lead.id,
         name: lead.name,
         email: lead.email,

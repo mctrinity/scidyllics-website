@@ -5,6 +5,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { Sparkles, ArrowRight, ShieldCheck, Wrench, Zap, Terminal, Cpu, Brain, LineChart, Rocket, Mail, Linkedin, Github, Cloud, Layers } from "lucide-react";
 import { Button, Card, H2 } from "@/components/ui";
+import { Chatbot } from "@/components/chatbot";
 import { useState } from "react";
 
 const theme = {
@@ -462,6 +463,7 @@ export default function Page() {
       <About />
       <Contact />
       <Footer />
+      <Chatbot />
     </div>
   );
 }
