@@ -12,27 +12,27 @@ function BlueskyIcon(props: React.SVGProps<SVGSVGElement>) {
 const socials = [
   {
     name: "LinkedIn",
-    href: "https://linkedin.com",
+    href: "https://www.linkedin.com/in/mary-ann-dizon-ba336436/",
     icon: <Linkedin size={24} />,
   },
   {
     name: "GitHub",
-    href: "https://github.com",
+    href: "https://github.com/mctrinity",
     icon: <Github size={24} />,
   },
   {
     name: "Twitter",
-    href: "https://twitter.com",
+    href: "https://x.com/goodbyegirl924",
     icon: <Twitter size={24} />,
   },
   {
     name: "Instagram",
-    href: "https://instagram.com",
+    href: "https://www.instagram.com/makio143/",
     icon: <Instagram size={24} />,
   },
   {
     name: "Bluesky",
-    href: "https://bsky.app",
+    href: "https://bsky.app/profile/mako143.bsky.social",
     icon: <BlueskyFAIcon size="lg" />,
   },
 ];
