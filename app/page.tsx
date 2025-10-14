@@ -44,6 +44,8 @@ function Services() {
 }
 
 import React from "react";
+import WeatherWidget from "../components/WeatherWidget";
+import ForexWidget from "../components/ForexWidget";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Wrench, Zap, Terminal, Cpu, Brain, LineChart, Rocket, Mail, Linkedin, Github, Cloud, Layers } from "lucide-react";
 import { Button, Card, H2 } from "@/components/ui";
@@ -461,6 +463,10 @@ export default function Page() {
       <Stack />
       <About />
       <Contact />
+      <div className="container grid md:grid-cols-2 gap-8 my-12">
+        <WeatherWidget />
+        <ForexWidget />
+      </div>
       <Footer />
       <Chatbot />
     </div>
