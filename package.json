@@ -9,6 +9,8 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@fortawesome/free-brands-svg-icons": "^7.1.0",
+    "@fortawesome/react-fontawesome": "^3.1.0",
     "@prisma/client": "^5.20.0",
     "autoprefixer": "^10.4.21",
     "clsx": "^2.1.1",

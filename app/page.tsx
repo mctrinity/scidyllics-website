@@ -152,9 +152,15 @@ function Hero() {
                 <div className="flex items-center gap-1"><Zap className="h-4 w-4" /> Measurable ROI</div>
               </div>
             </div>
-            <div className="relative flex items-center justify-center">
+            <motion.div
+              className="relative flex items-center justify-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ duration: 0.5, delay: 0.1, type: "spring", stiffness: 140 }}
+              whileHover={{ scale: 1.08, transition: { duration: 0.2 } }}
+            >
               <img src="/hero.png" alt="Hero" className="max-w-full h-auto rounded-3xl shadow-xl mt-8 mb-8 p-2" />
-            </div>
+            </motion.div>
           </div>
         </motion.div>
       </div>
