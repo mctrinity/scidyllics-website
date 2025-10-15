@@ -5,12 +5,24 @@ function Services() {
     {
       title: "CI/CD Pipeline Optimization",
       desc: "Accelerate delivery and reduce incidents with automated, multi-platform CI/CD pipelines.",
-      bullets: ["Azure DevOps, GitHub Actions, Jenkins", "Parallel job optimization", "Automated deployments"]
+      bullets: [
+        "Azure DevOps, GitHub Actions, Jenkins",
+        "Parallel job optimization",
+        "Automated deployments",
+  "Containerization (Docker)",
+        "Kubernetes orchestration"
+      ]
     },
     {
       title: "Infrastructure as Code",
       desc: "Modernize your infrastructure with Terraform and Ansible for repeatable, scalable environments.",
-      bullets: ["Terraform, Ansible", "Multi-cloud (AWS, Azure, GCP)", "Automated provisioning"]
+      bullets: [
+        "Terraform, Ansible",
+        "Multi-cloud (AWS, Azure, GCP)",
+        "Automated provisioning",
+        "Policy as code (Open Policy Agent, Azure Policy)",
+        "Self-healing and auto-scaling"
+      ]
     },
     {
       title: "Open Source Monitoring",
