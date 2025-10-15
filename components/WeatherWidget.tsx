@@ -10,11 +10,11 @@ type Weather = {
 
 const LOCATIONS = [
   { name: "Current Location", query: "auto:ip" },
-  { name: "London, UK", query: "London,UK" },
-  { name: "Ontario, Canada", query: "Ontario,CA" },
-  { name: "Tokyo, Japan", query: "Tokyo,JP" },
-  { name: "Sydney, Australia", query: "Sydney,AU" },
-  { name: "Los Angeles, USA", query: "Los Angeles,US" },
+  { name: "London", query: "London,UK" },
+  { name: "Ontario", query: "Ontario,CA" },
+  { name: "Tokyo", query: "Tokyo,JP" },
+  { name: "Sydney", query: "Sydney,AU" },
+  { name: "Miami", query: "Miami,US" },
 ];
 
 const API_KEY = process.env.NEXT_PUBLIC_OPENWEATHER_API_KEY || process.env.OPENWEATHER_API_KEY || "";
