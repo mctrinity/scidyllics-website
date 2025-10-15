@@ -63,6 +63,7 @@ function Services() {
 }
 
 import React from "react";
+import Footer from "../components/Footer";
 import WeatherWidget from "../components/WeatherWidget";
 import ForexWidget from "../components/ForexWidget";
 import SocialSidebar from "../components/SocialSidebar";
@@ -275,44 +276,35 @@ function Contact() {
     e.preventDefault();
     setStatus("sending");
     setError(null);
-    
     const form = e.currentTarget;
     const fd = new FormData(form);
     const body = Object.fromEntries(fd.entries());
-    
     // Basic client-side validation
     if (!body.name || !body.email) {
       setError("Name and email are required");
       setStatus("idle");
       return;
     }
-    
     if (typeof body.email === 'string' && !body.email.includes('@')) {
       setError("Please enter a valid email address");
       setStatus("idle");
       return;
     }
-    
     try {
       const res = await fetch("/api/contact", { 
         method: "POST", 
         headers: { "Content-Type": "application/json" }, 
         body: JSON.stringify(body) 
       });
-      
       if (!res.ok) {
         const errorText = await res.text();
         throw new Error(errorText || "Failed to send message");
       }
-      
       setStatus("sent");
       form.reset();
-      
-      // Auto-reset after 5 seconds
       setTimeout(() => {
         setStatus("idle");
       }, 5000);
-      
     } catch (err: any) {
       setError(err?.message || "Something went wrong. Please try again.");
       setStatus("idle");
@@ -450,39 +442,7 @@ function Contact() {
   );
 }
 
-function Footer() {
-  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
-    e.preventDefault();
-    const target = document.getElementById(targetId);
-    if (target) {
-      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      // Remove focus from any element
-      if (document.activeElement instanceof HTMLElement) {
-        document.activeElement.blur();
-      }
-    }
-  };
-
-  return (
-    <footer className="fixed bottom-0 left-0 right-0 z-30 border-t border-gray-200 py-4 backdrop-blur supports-[backdrop-filter]:bg-white/90">
-      <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
-        <div className="flex items-center gap-2">
-          <span className="text-gray-900 font-medium">{theme.name}</span>
-          <span>© {new Date().getFullYear()}&nbsp;All rights reserved.</span>
-        </div>
-        <div className="flex items-center gap-4">
-          <a href="#services" onClick={(e) => handleNavClick(e, 'services')} onFocus={(e) => e.target.blur()} className="focus:outline-none">Services</a>
-          <a href="#portfolio" onClick={(e) => handleNavClick(e, 'portfolio')} onFocus={(e) => e.target.blur()} className="focus:outline-none">Case Studies</a>
-          <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} onFocus={(e) => e.target.blur()} className="focus:outline-none">Contact</a>
-        </div>
-      </div>
-        {/* Hide SocialSidebar on mobile/tablet by making it invisible and not take up space */}
-        <div className="block md:hidden invisible h-0">
-          <SocialSidebar />
-        </div>
-    </footer>
-  );
-}
+// ...existing code...
 
 export default function Page() {
   return (
@@ -498,7 +458,7 @@ export default function Page() {
         <WeatherWidget />
         <ForexWidget />
       </div>
-      {/* <Footer /> */}
+  {/* <Footer /> */}
       <Chatbot />
     </div>
   );

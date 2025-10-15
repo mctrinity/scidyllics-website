@@ -40,7 +40,7 @@ const socials = [
 export default function SocialSidebar() {
   return (
     <aside
-      className="w-full flex flex-row items-center justify-center gap-6 px-4 py-14 md:py-3 md:bg-transparent md:shadow-lg md:z-50 md:fixed md:left-0 md:top-16 md:h-[calc(100vh-4rem)] md:w-16 md:flex-col md:items-center md:justify-center"
+      className="w-full flex flex-row items-center justify-center gap-6 px-4 py-6 md:py-1 md:bg-transparent md:shadow-lg md:z-50 md:fixed md:left-0 md:top-16 md:h-[calc(100vh-4rem)] md:w-16 md:flex-col md:items-center md:justify-center"
     >
       <nav className="flex flex-row md:flex-col gap-6 justify-center items-center w-full md:w-auto">
         {socials.map((social, idx) => (
