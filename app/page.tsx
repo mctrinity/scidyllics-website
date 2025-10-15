@@ -498,7 +498,7 @@ export default function Page() {
         <WeatherWidget />
         <ForexWidget />
       </div>
-      <Footer />
+      {/* <Footer /> */}
       <Chatbot />
     </div>
   );
