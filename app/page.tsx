@@ -476,6 +476,10 @@ function Footer() {
           <a href="#contact" onClick={(e) => handleNavClick(e, 'contact')} onFocus={(e) => e.target.blur()} className="focus:outline-none">Contact</a>
         </div>
       </div>
+        {/* Hide SocialSidebar on mobile/tablet by making it invisible and not take up space */}
+        <div className="block md:hidden invisible h-0">
+          <SocialSidebar />
+        </div>
     </footer>
   );
 }
