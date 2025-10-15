@@ -24,7 +24,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           {children}
         </main>
         {/* Footer always visible, socials only in phone mode */}
-        <Footer />
+        {/* <Footer /> */}
       </body>
     </html>
   );
