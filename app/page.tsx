@@ -230,23 +230,25 @@ function Stack() {
 function About() {
   return (
     <section id="about" className="scroll-mt-24 py-20 focus:outline-none" tabIndex={-1}>
-      <div className="container grid md:grid-cols-2 gap-8 items-center">
+      <div className="container max-w-2xl mx-auto">
         <div className="text-gray-700">
           <H2 subtitle="We help DevOps teams deliver faster with less risk using proven automation, open source tools, and best practices.">About Scidyllics</H2>
-          <ul className="space-y-2">
-            {["4–6 week engagements that prove ROI", "Open source and vendor-neutral approach", "Battle-tested playbooks for repeatable results"].map(b => (
-              <li key={b}>• {b}</li>
-            ))}
-          </ul>
+          <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mt-2 mb-6 mx-auto max-w-xl">
+            <ul className="space-y-2 text-sm text-gray-700 pl-4 pr-4 text-left">
+              {["4–6 week engagements that prove ROI", "Open source and vendor-neutral approach", "Battle-tested playbooks for repeatable results"].map(b => (
+                <li key={b}>• {b}</li>
+              ))}
+            </ul>
+          </div>
+          <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mb-2 mx-auto max-w-xl">
+            <h3 className="text-gray-900 font-semibold mb-3 text-center">Signature Offers</h3>
+            <ul className="space-y-2 text-sm text-gray-700 pl-4 pr-4 text-left">
+              <li>• AI Application Development & Deployment</li>
+              <li>• Multi-Cloud DevOps Optimization</li>
+              <li>• LLM Integration Consulting</li>
+            </ul>
+          </div>
         </div>
-        <Card>
-          <h3 className="text-white/90 dark:text-white/90 light:text-gray-900 font-semibold mb-2">Signature Offers</h3>
-          <ul className="space-y-2 text-sm text-zinc-300 dark:text-zinc-300 light:text-gray-700">
-            <li>• AI Application Development & Deployment</li>
-            <li>• Multi-Cloud DevOps Optimization</li>
-            <li>• LLM Integration Consulting</li>
-          </ul>
-        </Card>
       </div>
     </section>
   );

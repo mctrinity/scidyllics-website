@@ -12,9 +12,9 @@ export default function ForexWidget() {
   useEffect(() => {
     async function fetchRegionCurrency() {
       try {
-        const res = await fetch("https://ipapi.co/currency/");
-        const currency = await res.text();
-        setRegionCurrency(currency || "PHP");
+        const res = await fetch("/api/geo");
+        const data = await res.json();
+        setRegionCurrency(data.currency || "PHP");
       } catch {
         setRegionCurrency("PHP");
       }

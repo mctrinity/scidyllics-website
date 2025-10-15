@@ -28,14 +28,19 @@ export default function WeatherWidget() {
       setLoading(true);
       const results = await Promise.all(
         LOCATIONS.map(async loc => {
-          let url = loc.query === "auto:ip"
-            ? `https://ipapi.co/json/`
-            : null;
           let city = loc.query;
-          if (url) {
-            const res = await fetch(url);
-            const data = await res.json();
-            city = `${data.city},${data.country_code}`;
+          if (loc.query === "auto:ip") {
+            try {
+              const res = await fetch("/api/geo");
+              const data = await res.json();
+              if (data.city && data.country_code) {
+                city = `${data.city},${data.country_code}`;
+              } else {
+                city = "Manila,PH";
+              }
+            } catch {
+              city = "Manila,PH";
+            }
           }
           const weatherRes = await fetch(
             `https://api.openweathermap.org/data/2.5/weather?q=${city}&units=metric&appid=${API_KEY}`
