@@ -40,15 +40,22 @@ function Services() {
       <div className="container">
         <H2 subtitle="Our core offerings for DevOps and AI-driven teams">Services</H2>
         <div className="grid md:grid-cols-2 gap-8">
-          {services.map(s => (
-            <Card key={s.title}>
-              <h3 className="text-gray-900 font-semibold mb-2">{s.title}</h3>
-              <p className="text-gray-700 mb-3">{s.desc}</p>
-              <ul className="space-y-2 text-sm text-gray-600">
-                {s.bullets.map(b => <li key={b}>• {b}</li>)}
-              </ul>
-            </Card>
-          ))}
+          {services.map(s => {
+            let icon = null;
+            if (s.title === "CI/CD Pipeline Optimization") icon = <Rocket className="inline-block mr-2 text-indigo-500" size={20} />;
+            if (s.title === "Infrastructure as Code") icon = <Layers className="inline-block mr-2 text-green-500" size={20} />;
+            if (s.title === "Open Source Monitoring") icon = <LineChart className="inline-block mr-2 text-blue-500" size={20} />;
+            if (s.title === "AI Integration & Development") icon = <Brain className="inline-block mr-2 text-purple-500" size={20} />;
+            return (
+              <Card key={s.title}>
+                <h3 className="text-gray-900 font-semibold mb-2 flex items-center">{icon}{s.title}</h3>
+                <p className="text-gray-700 mb-3">{s.desc}</p>
+                <ul className="space-y-2 text-sm text-gray-600">
+                  {s.bullets.map(b => <li key={b}>• {b}</li>)}
+                </ul>
+              </Card>
+            );
+          })}
         </div>
       </div>
     </section>
@@ -58,6 +65,7 @@ function Services() {
 import React from "react";
 import WeatherWidget from "../components/WeatherWidget";
 import ForexWidget from "../components/ForexWidget";
+import SocialSidebar from "../components/SocialSidebar";
 import { motion } from "framer-motion";
 import { ArrowRight, ShieldCheck, Wrench, Zap, Terminal, Cpu, Brain, LineChart, Rocket, Mail, Linkedin, Github, Cloud, Layers } from "lucide-react";
 import { Button, Card, H2 } from "@/components/ui";
@@ -230,23 +238,28 @@ function Stack() {
 function About() {
   return (
     <section id="about" className="scroll-mt-24 py-20 focus:outline-none" tabIndex={-1}>
-      <div className="container max-w-2xl mx-auto">
-        <div className="text-gray-700">
-          <H2 subtitle="We help DevOps teams deliver faster with less risk using proven automation, open source tools, and best practices.">About Scidyllics</H2>
-          <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mt-2 mb-6 mx-auto max-w-xl">
-            <ul className="space-y-2 text-sm text-gray-700 pl-4 pr-4 text-left">
-              {["4–6 week engagements that prove ROI", "Open source and vendor-neutral approach", "Battle-tested playbooks for repeatable results"].map(b => (
-                <li key={b}>• {b}</li>
-              ))}
-            </ul>
+      <div className="container mx-auto max-w-4xl">
+        <div className="flex flex-col md:flex-row items-start gap-8">
+          <div className="w-full md:w-1/3 flex justify-center items-start">
+            <img src="/about.png" alt="About Scidyllics" className="rounded-2xl shadow-lg w-48 md:w-auto md:h-[75%] object-cover mt-2 mb-4 md:mb-0 max-h-[500px]" />
           </div>
-          <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mb-2 mx-auto max-w-xl">
-            <h3 className="text-gray-900 font-semibold mb-3 text-center">Signature Offers</h3>
-            <ul className="space-y-2 text-sm text-gray-700 pl-4 pr-4 text-left">
-              <li>• AI Application Development & Deployment</li>
-              <li>• Multi-Cloud DevOps Optimization</li>
-              <li>• LLM Integration Consulting</li>
-            </ul>
+          <div className="text-gray-700 flex-1">
+            <H2 subtitle="We help DevOps teams deliver faster with less risk using proven automation, open source tools, and best practices.">About Scidyllics</H2>
+            <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mt-2 mb-6 mx-auto max-w-xl">
+              <ul className="space-y-2 text-sm text-gray-700 pl-4 pr-4 text-left">
+                {["4–6 week engagements that prove ROI", "Open source and vendor-neutral approach", "Battle-tested playbooks for repeatable results"].map(b => (
+                  <li key={b}>• {b}</li>
+                ))}
+              </ul>
+            </div>
+            <div className="bg-white/80 border border-gray-200 rounded-xl shadow p-4 mb-2 mx-auto max-w-xl">
+              <h3 className="text-gray-900 font-semibold mb-3 text-center">Signature Offers</h3>
+              <ul className="space-y-2 text-sm text-gray-700 mx-auto max-w-xl pl-4 pr-4 text-left">
+                <li>• AI Application Development & Deployment</li>
+                <li>• Multi-Cloud DevOps Optimization</li>
+                <li>• LLM Integration Consulting</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -455,7 +468,7 @@ function Footer() {
       <div className="container flex flex-col md:flex-row items-center justify-between gap-4 text-sm text-gray-600">
         <div className="flex items-center gap-2">
           <span className="text-gray-900 font-medium">{theme.name}</span>
-          <span>© {new Date().getFullYear()}</span>
+          <span>© {new Date().getFullYear()}&nbsp;All rights reserved.</span>
         </div>
         <div className="flex items-center gap-4">
           <a href="#services" onClick={(e) => handleNavClick(e, 'services')} onFocus={(e) => e.target.blur()} className="focus:outline-none">Services</a>
