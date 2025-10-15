@@ -62,7 +62,7 @@ export default function WeatherWidget() {
   const { motion } = require("framer-motion");
   return (
     <motion.div
-      className="weather-widget p-4 rounded-xl bg-gradient-to-br from-blue-100 via-white to-cyan-100 shadow-xl mb-6 border border-blue-200 hover:shadow-2xl transition-shadow duration-300 cursor-pointer"
+          className="weather-widget p-4 rounded-xl bg-gradient-to-br from-blue-100 via-white to-cyan-100 shadow-xl mb-6 border border-blue-200 hover:shadow-2xl transition-shadow duration-300 cursor-pointer flex flex-col items-center justify-center"
       initial={{ opacity: 0, y: 30 }}
       animate={{ opacity: 1, y: 0 }}
       whileHover={{ scale: 1.03 }}
@@ -72,22 +72,24 @@ export default function WeatherWidget() {
       {loading ? (
         <div className="text-xs text-gray-500">Loading...</div>
       ) : (
-        <ul className="grid grid-cols-2 gap-3">
+          <ul className="grid grid-cols-1 md:grid-cols-2 gap-3 w-full justify-items-center">
           {weather.map((w, i) => (
-            <motion.li
-              key={i}
-              className="flex items-center gap-3 text-sm bg-white/60 rounded-lg px-2 py-1 hover:bg-blue-50 transition-colors"
+                <motion.li
+                  key={i}
+                  className="flex flex-col md:flex-row items-center justify-center gap-3 text-sm bg-white/60 rounded-lg px-2 py-1 hover:bg-blue-50 transition-colors w-full md:w-auto"
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: i * 0.08, duration: 0.4 }}
               whileHover={{ scale: 1.05 }}
             >
-              {w.icon && (
-                <img src={`https://openweathermap.org/img/wn/${w.icon ?? "01d"}.png`} alt={w.desc ?? "weather"} className="w-6 h-6 drop-shadow" />
-              )}
-              <span className="font-semibold text-blue-900">{w.name === "Current Location" ? w.city : w.name}:</span>
-              <span className="font-mono text-blue-700">{w.temp ? `${Math.round(w.temp)}°C` : "N/A"}</span>
-              <span className="text-gray-500">{w.desc}</span>
+              <span className="font-semibold text-blue-900 flex items-center gap-2">
+                {w.name === "Current Location" ? w.city : w.name}:
+                {w.temp ? ` ${Math.round(w.temp)}°C` : " N/A"}
+                {w.desc ? ` ${w.desc}` : ""}
+                {w.icon && (
+                  <img src={`https://openweathermap.org/img/wn/${w.icon ?? "01d"}.png`} alt={w.desc ?? "weather"} className="w-6 h-6 drop-shadow inline-block align-middle" />
+                )}
+              </span>
             </motion.li>
           ))}
         </ul>
