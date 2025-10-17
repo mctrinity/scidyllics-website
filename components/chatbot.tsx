@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 
 interface Message {
@@ -21,6 +21,7 @@ export function Chatbot() {
     }
   ]);
   const [input, setInput] = useState('');
+
 
   const quickReplies = [
     'Tell me about your services',
@@ -95,9 +96,13 @@ export function Chatbot() {
 
       {/* Chat Window */}
       {isOpen && (
-        <div className="chatbot-widget fixed bottom-20 right-6 w-96 h-[500px] z-40 flex flex-col">
-          {/* Header */}
-          <div className="bg-indigo-600 p-4 rounded-t-2xl">
+        <div
+          className="chatbot-widget fixed bottom-20 right-6 w-96 h-[500px] z-40 flex flex-col"
+        >
+          {/* Header (draggable handle) */}
+          <div
+            className="bg-indigo-600 p-4 rounded-t-2xl select-none"
+          >
             <div className="flex items-center justify-between">
               <div>
                 <h3 className="font-semibold chatbot-header-text">Scidyllics Assistant</h3>

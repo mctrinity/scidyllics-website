@@ -1,7 +1,6 @@
 
 import "./globals.css";
-import SocialSidebar from "../components/SocialSidebar";
-import Footer from "../components/Footer";
+import ClientLayout from "../components/ClientLayout";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -16,15 +15,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <link rel="icon" type="image/png" sizes="48x48" href="/favicon.svg" />
         </head>
   <body>
-        {/* Sidebar for desktop */}
-        <div className="hidden md:block">
-          <SocialSidebar />
-        </div>
-        <main className="md:ml-16">
+        <ClientLayout>
           {children}
-        </main>
-        {/* Footer always visible, socials only in phone mode */}
-        <Footer />
+        </ClientLayout>
       </body>
     </html>
   );
