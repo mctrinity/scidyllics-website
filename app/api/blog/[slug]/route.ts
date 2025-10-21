@@ -1,5 +1,6 @@
 import { NextResponse } from "next/server";
 import { cookies } from 'next/headers';
+import { isAdminServer } from '@/lib/admin';
 import { prisma } from "@/lib/prisma";
 import { resolveRemoteThumbnail } from "@/lib/resolve-thumbnail";
 
@@ -10,8 +11,7 @@ export async function GET(_req: Request, { params }: { params: { slug: string } 
 }
 
 export async function PUT(req: Request, { params }: { params: { slug: string } }) {
-  const cookieStore = cookies();
-  if (cookieStore.get('isAdmin')?.value !== '1') {
+  if (!isAdminServer()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const data = await req.json();
@@ -45,8 +45,7 @@ export async function PUT(req: Request, { params }: { params: { slug: string } }
 }
 
 export async function DELETE(_req: Request, { params }: { params: { slug: string } }) {
-  const cookieStore = cookies();
-  if (cookieStore.get('isAdmin')?.value !== '1') {
+  if (!isAdminServer()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   try {

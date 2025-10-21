@@ -86,6 +86,7 @@ Seeding an initial admin user:
 	- `ADMIN_EMAIL` — the admin account email (e.g. admin@example.com)
 	- `ADMIN_NAME` — optional display name (defaults to "Admin")
 	- `ADMIN_PASSWORD` — password used to sign in at `/admin/login`
+	- `ADMIN_COOKIE_SECRET` — a random long secret used to sign admin session cookies (required)
 2. Install dev dependencies and run the seed script:
 
 ```bash

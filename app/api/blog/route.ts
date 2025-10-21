@@ -1,11 +1,11 @@
 import { NextResponse } from "next/server";
 import { cookies } from 'next/headers';
+import { isAdminServer } from '@/lib/admin';
 import { prisma } from "@/lib/prisma";
 import { resolveRemoteThumbnail } from "@/lib/resolve-thumbnail";
 
 export async function POST(req: Request) {
-  const cookieStore = cookies();
-  if (cookieStore.get('isAdmin')?.value !== '1') {
+  if (!isAdminServer()) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
   const data = await req.json();
