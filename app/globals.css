@@ -121,10 +121,6 @@ p, div, span {
   color: #1f2937;
 }
 
-.text-white {
-  color: #111827 !important;
-}
-
 .text-zinc-400 {
   color: #6b7280 !important;
 }
@@ -134,7 +130,7 @@ p, div, span {
 }
 
 .text-white\/90 {
-  color: #111827 !important;
+  /* removed conflicting default, keep as no-op or customize if needed */
 }
 
 /* Chatbot widget styles */

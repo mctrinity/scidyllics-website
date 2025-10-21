@@ -1,4 +1,3 @@
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -22,5 +21,38 @@ model CaseStudy {
   title     String
   summary   String
   impact    String
+  createdAt DateTime @default(now())
+}
+
+model BlogPost {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  content       String   // Markdown or HTML
+  thumbnailUrl  String?  // e.g. https://i.imgur.com/xxxx.jpg
+  backgroundUrl String?  // e.g. https://i.imgur.com/yyyy.jpg
+  author        String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+  publishedAt   DateTime @default(now())
+  comments      Comment[]
+}
+
+model User {
+  id        String   @id @default(cuid())
+  name      String
+  email     String   @unique
+  avatarUrl String? // Optional, fallback to Gravatar
+  createdAt DateTime @default(now())
+  comments  Comment[]
+}
+
+model Comment {
+  id        String   @id @default(cuid())
+  post      BlogPost @relation(fields: [postId], references: [id])
+  postId    String
+  author    User     @relation(fields: [authorId], references: [id])
+  authorId  String
+  text      String
   createdAt DateTime @default(now())
 }

@@ -1,6 +1,8 @@
 
 import "./globals.css";
 import ClientLayout from "../components/ClientLayout";
+import AdminToolbar from "@/components/AdminToolbar";
+import { isAdminServer } from "@/lib/admin";
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,6 +11,7 @@ export const metadata: Metadata = {
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const admin = isAdminServer();
   return (
       <html lang="en">
         <head>
@@ -17,6 +20,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   <body>
         <ClientLayout>
           {children}
+          {admin && <AdminToolbar />}
         </ClientLayout>
       </body>
     </html>

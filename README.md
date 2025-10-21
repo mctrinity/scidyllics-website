@@ -78,6 +78,22 @@ This gives you:
 - Email functionality configured with Resend API but temporarily disabled for stability
 - Contact form submissions are saved to SQLite database and viewable in Prisma Studio
 - Rate limiting & auth are not included; add if exposing write APIs publicly
+- Admin authentication: set ADMIN_PASSWORD in your environment and create an admin User record (matching email) in the DB to sign in at /admin/login
+- Admin database viewer: after logging in at /admin/login, visit /admin/db to inspect users and blog posts. This endpoint requires the admin cookie and should be disabled or gated for production.
+
+Seeding an initial admin user:
+1. Set the environment variables in your local `.env` (or in Render):
+	- `ADMIN_EMAIL` — the admin account email (e.g. admin@example.com)
+	- `ADMIN_NAME` — optional display name (defaults to "Admin")
+	- `ADMIN_PASSWORD` — password used to sign in at `/admin/login`
+2. Install dev dependencies and run the seed script:
+
+```bash
+npm i
+npm run seed
+```
+
+This will upsert the `User` with the `ADMIN_EMAIL`. After that, sign in at `/admin/login` with the email and `ADMIN_PASSWORD`, and you should see admin controls.
 - Database file (`dev.db`) is excluded from git - run `npx prisma db push` after cloning
 
 © 2025 Scidyllics

@@ -2,6 +2,7 @@ import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBluesky } from "@fortawesome/free-brands-svg-icons";
 
-export default function BlueskyFAIcon(props: { size?: "xs" | "lg" | "sm" | "1x" | "2x" | "3x" | "4x" | "5x" | undefined }) {
-  return <FontAwesomeIcon icon={faBluesky} {...props} />;
+export default function BlueskyFAIcon({ size = 'lg' }: { size?: string }) {
+  // Social icons use a square 24px area; keep consistent sizing
+  return <FontAwesomeIcon icon={faBluesky} className="w-6 h-6" />;
 }
